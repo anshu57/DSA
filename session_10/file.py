@@ -47,20 +47,23 @@ def boardPath(sn,en):
     if sn == 3:
 
 
-def permut(str):
-    if len(str) == 0:
-        return [""]
+def allpermut(str, vis, count, myAns, ans):
+    if count == len(str):
+        myAns.append(ans)
+        return
+    
+    l = len(str)
+    for i in range(l):
+        if vis[i]==False:
+            vis[i] = True
+            allpermut(str, vis, count + 1, myAns, ans + str[i])
+            vis[i] = False
 
-    ch = str[0]
-    smallList = subsequence(str[1:])
-    myAns = []
-    for s in smallList:
-        myAns.append(s)
-        myAns.append(ch + s)
 
-    return myAns
-
-
+myAns = []
+vis = [False] * 3 
+allpermut("abc", vis, 0, myAns, "") 
+print(myAns)
 
 
 
