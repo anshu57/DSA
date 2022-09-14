@@ -43,7 +43,7 @@ def boardPath(sn,en):
         count += boardPath(sn+1,en) + boardPath(sn+2,en) + boardPath(sn+3,en) + boardPath(sn+4,en) + boardPath(sn+5,en)
         return
     if sn == 2:
-        count + = boardPath(sn+1,en)
+        count += boardPath(sn+1,en)
     if sn == 3:
 
 
