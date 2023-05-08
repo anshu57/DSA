@@ -1,6 +1,6 @@
 class Queue:
     def __init__(self, maxSize):
-        self.items = [None]
+        self.items = maxSize*[None]
         self.maxSize = maxSize
         self.start = -1
         self.top = -1
@@ -36,9 +36,28 @@ class Queue:
             self.items[self.top] = value
             return "The elem is inserted at the end of Queue"
         
-customQueue = Queue(3)
-customQueue.enqueue(1)
-customQueue.enqueue(2)
-customQueue.enqueue(3)
+    def dequeue(self):
+        if self.isEmpty():
+            return "Thereis not any element in the queue"
+        else:
+            firstElement = self.items(self.start)
+            start = self.start
+            if self.start == self.top:
+                self.start = -1
+                self.top = -1
+            elif self.start +1 == self.maxSize:
+                self.start = 0
+            else:
+                self.start += 1
+            self.items[start] = None
+            return firstElement
 
-print(customQueue.isFull())
+
+
+        
+customQueue = Queue(3)
+print(customQueue.enqueue(1))
+print(customQueue.enqueue(2))
+print(customQueue.enqueue(3))
+# customQueue.dequeue()
+print(customQueue)
