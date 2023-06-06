@@ -1,5 +1,6 @@
 
-
+import sys
+sys.path.insert(0, '/home/anshu/Desktop/data/DSA_udemy')
 
 class BSTNode:
     def __init__(self, data):
@@ -38,13 +39,73 @@ def preOrderTraversal(rootNode):
     preOrderTraversal(rootNode.rightChild)
 
 
+
+
+# preOrderTraversal(newBST)
+
+def inOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    inOrderTraversal(rootNode.leftChild)
+    print(rootNode.data)
+    inOrderTraversal(rootNode.rightChild)
+
+
+# newBST = BSTNode(None)
+# print(insertNode(newBST, 70))
+# print(insertNode(newBST,30))
+# insertNode(newBST,50)
+# insertNode(newBST,20)
+# insertNode(newBST,10)
+# insertNode(newBST,180)
+# insertNode(newBST,40)
+
+# inOrderTraversal(newBST)
+
+def postOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    postOrderTraversal(rootNode.leftChild)
+    postOrderTraversal(rootNode.rightChild)
+    print(rootNode.data)
+
 newBST = BSTNode(None)
-print(insertNode(newBST, 70))
-print(insertNode(newBST,30))
+insertNode(newBST, 70)
+insertNode(newBST,30)
 insertNode(newBST,50)
 insertNode(newBST,20)
 insertNode(newBST,10)
 insertNode(newBST,180)
 insertNode(newBST,40)
 
-preOrderTraversal(newBST)
+postOrderTraversal(newBST)
+
+from Queue import QueueLinkedList as queue
+
+
+def levelOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    else:
+        customQueue = queue.Queue
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            print(root.value.data)
+            if root.value.leftChild is not None:
+                customQueue.enqueue(root.value.leftChild)
+            if root.value.rightChild is not None:
+                customQueue.enqueue(root.value.rightChild)
+
+
+newBST = BSTNode(None)
+insertNode(newBST, 70)
+insertNode(newBST,30)
+insertNode(newBST,50)
+insertNode(newBST,20)
+insertNode(newBST,10)
+insertNode(newBST,180)
+insertNode(newBST,40)
+
+levelOrderTraversal(newBST)
+
