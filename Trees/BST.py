@@ -69,16 +69,16 @@ def postOrderTraversal(rootNode):
     postOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
 
-newBST = BSTNode(None)
-insertNode(newBST, 70)
-insertNode(newBST,30)
-insertNode(newBST,50)
-insertNode(newBST,20)
-insertNode(newBST,10)
-insertNode(newBST,180)
-insertNode(newBST,40)
+# newBST = BSTNode(None)
+# insertNode(newBST, 70)
+# insertNode(newBST,30)
+# insertNode(newBST,50)
+# insertNode(newBST,20)
+# insertNode(newBST,10)
+# insertNode(newBST,180)
+# insertNode(newBST,40)
 
-postOrderTraversal(newBST)
+# postOrderTraversal(newBST)
 
 from Queue import QueueLinkedList as queue
 
@@ -98,6 +98,32 @@ def levelOrderTraversal(rootNode):
                 customQueue.enqueue(root.value.rightChild)
 
 
+# newBST = BSTNode(None)
+# insertNode(newBST, 70)
+# insertNode(newBST,30)
+# insertNode(newBST,50)
+# insertNode(newBST,20)
+# insertNode(newBST,10)
+# insertNode(newBST,180)
+# insertNode(newBST,40)
+
+# levelOrderTraversal(newBST)
+
+def searchNode(rootNode, nodeValue):
+    if rootNode.data == nodeValue:
+        print("The value is found")
+    elif nodeValue < rootNode.data:
+        if rootNode.leftChild.data == nodeValue:
+            print("The value is found")
+        else:
+            searchNode(rootNode.leftChild, nodeValue)
+    else:
+        if rootNode.rightChild.data == nodeValue:
+            print("The value is found")
+        else:
+            searchNode(rootNode.rightChild, nodeValue)
+
+
 newBST = BSTNode(None)
 insertNode(newBST, 70)
 insertNode(newBST,30)
@@ -107,5 +133,7 @@ insertNode(newBST,10)
 insertNode(newBST,180)
 insertNode(newBST,40)
 
-levelOrderTraversal(newBST)
+searchNode(newBST, 10)
 
+# Time complexity : O(logN)
+# Space Complexity : O(logN)
