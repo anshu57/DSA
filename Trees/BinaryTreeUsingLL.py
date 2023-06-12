@@ -58,7 +58,7 @@ def levelOrderTraversal(rootNode):
             if (root.value.rightChild is not None):
                 customQueue.enqueue(root.value.rightChild)    
 
-# levelOrderTraversal(newBT)
+levelOrderTraversal(newBT)
 
 def searchBT(rootNode, nodeValue):
     if not rootNode:
@@ -172,8 +172,8 @@ def deleteBT(rootNode):
     rootNode.rightChild = None
     return "The BT has been successfully deleted"
 
-deleteBT(newBT)
-levelOrderTraversal(newBT)
+# deleteBT(newBT)
+# levelOrderTraversal(newBT)
 
             
 

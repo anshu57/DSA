@@ -1,6 +1,6 @@
-
 import sys
 sys.path.insert(0, '/home/anshu/Desktop/data/DSA_udemy')
+from Queue import QueueLinkedList as queue
 
 class BSTNode:
     def __init__(self, data):
@@ -80,14 +80,12 @@ def postOrderTraversal(rootNode):
 
 # postOrderTraversal(newBST)
 
-from Queue import QueueLinkedList as queue
-
 
 def levelOrderTraversal(rootNode):
     if not rootNode:
         return
     else:
-        customQueue = queue.Queue
+        customQueue = queue.Queue()
         customQueue.enqueue(rootNode)
         while not(customQueue.isEmpty()):
             root = customQueue.dequeue()
@@ -113,15 +111,87 @@ def searchNode(rootNode, nodeValue):
     if rootNode.data == nodeValue:
         print("The value is found")
     elif nodeValue < rootNode.data:
-        if rootNode.leftChild.data == nodeValue:
+        if rootNode.leftChild is None:
+            print("The value is not found")
+        elif rootNode.leftChild.data == nodeValue:
             print("The value is found")
+        
         else:
             searchNode(rootNode.leftChild, nodeValue)
     else:
-        if rootNode.rightChild.data == nodeValue:
+        if rootNode.rightChild is None:
+            print("The value is not found")
+        elif rootNode.rightChild.data == nodeValue:
             print("The value is found")
         else:
             searchNode(rootNode.rightChild, nodeValue)
+
+
+# newBST = BSTNode(None)
+# insertNode(newBST, 70)
+# insertNode(newBST,30)
+# insertNode(newBST,50)
+# insertNode(newBST,20)
+# insertNode(newBST,10)
+# insertNode(newBST,180)
+# insertNode(newBST,40)
+
+# searchNode(newBST, 10)
+
+# Time complexity : O(logN)
+# Space Complexity : O(logN)
+
+def minValueNode(bstNode):
+    current = bstNode
+    while (current.leftChild is not None):
+        current = current.leftChild
+    return current
+
+def deleteNode(rootNode, nodeValue):
+    if rootNode is None:
+        return rootNode
+    if nodeValue < rootNode.data:
+        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
+    elif nodeValue >rootNode.data:
+        rootNode.rightChild = deleteNode(rootNode.leftChild, nodeValue)
+    else:
+        if rootNode.leftChild is None:
+            temp = rootNode.rightChild
+            rootNode = None
+            return temp
+        
+        if rootNode.rightChild is None:
+            temp = rootNode.leftChild
+            rootNode = None
+            return temp
+        temp = minValueNode(rootNode.rightChild)
+        rootNode.data = temp.data
+        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
+    return rootNode
+
+
+
+
+# newBST = BSTNode(None)
+# insertNode(newBST, 70)
+# insertNode(newBST,30)
+# insertNode(newBST,50)
+# insertNode(newBST,20)
+# insertNode(newBST,10)
+# insertNode(newBST,180)
+# insertNode(newBST,40)
+
+# deleteNode(newBST, 20)
+# levelOrderTraversal(newBST)
+
+# Time complexity : O(logN)
+# Space Complexity : O(logN)
+
+def deleteBST(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "The BST has been successfully deleted"
 
 
 newBST = BSTNode(None)
@@ -132,8 +202,9 @@ insertNode(newBST,20)
 insertNode(newBST,10)
 insertNode(newBST,180)
 insertNode(newBST,40)
+print(deleteBST(newBST))
+levelOrderTraversal(newBST)
 
-searchNode(newBST, 10)
 
-# Time complexity : O(logN)
-# Space Complexity : O(logN)
+# Time Complexity : O(1)
+# Space Complexity : O(1)
