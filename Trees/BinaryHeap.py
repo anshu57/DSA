@@ -13,8 +13,8 @@ def peekofHeap(rootNode):
     else:
         return rootNode.customList[1]
     
-#Time complexity : O(1)
-# Space ?complexity: O(1) 
+# Time complexity : O(1)
+# Space complexity: O(1) 
 
 def sizeofHeap(rootNode):
     if not rootNode:
@@ -114,15 +114,30 @@ def extractNode(rootNode, heapType):
         heapifyTreeExtract(rootNode, 1, heapType)
         return extractedNode
     
+# newHeap = Heap(5)
+# insertNode(newHeap, 4, "Max")
+# insertNode(newHeap, 5, "Max")
+# insertNode(newHeap, 2, "Max")
+# insertNode(newHeap, 1, "Max")
+# print(extractNode(newHeap, "Max"))
+
+# Time Complexity : O(LogN)
+# Space Complexity : O(LogN)
+
+def deleteEntireBH(rootNode):
+    rootNode.customList = None
+
 newHeap = Heap(5)
 insertNode(newHeap, 4, "Max")
 insertNode(newHeap, 5, "Max")
 insertNode(newHeap, 2, "Max")
 insertNode(newHeap, 1, "Max")
-print(extractNode(newHeap, "Max"))
+deleteEntireBH(newHeap)
+levelOrderTraversal(newHeap)
 
-# Time Complexity : O(LogN)
-# Space Complexity : O(LogN)
+# Time Complexity : O(1)
+# Space Complexity : O(1)
+ 
     
 
 
