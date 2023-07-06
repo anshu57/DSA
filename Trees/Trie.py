@@ -40,24 +40,50 @@ class Trie:
     # Space Complexity : O(1)
     # print(newTrie.searchString("BCD"))
         
-    def deleteString(root, word, index):
+    # def deleteSt(root, word, index):
+    #     ch = word[index]
+    #     currentNode = root.children.get(ch)
+    #     canThisNodeBeDeleted = False
+    #     if len(currentNode.children) > 1:
+    #         deleteString(currentNode, word, index +1)
+    #         return False
+    #     if index == len(word) -1:
+    #         if len(currentNode.children) >=1:
+    #             currentNode.endOfString = False
+    #             return False
+    #         else:
+    #             root.children.pop(ch)
+    #             return True
+    #     if currentNode.endOfString == True:
+    #         deleteString(currentNode, word, index +1)
+    #         return False
+        
+    #     canThisNodeBeDeleted = deleteString(currentNode, word, index+1)
+    #     if canThisNodeBeDeleted == True:
+    #         root.children.pop(ch)
+    #         return True
+    #     else:
+    #         return False
+    def deleteString(self,root, word, index):
         ch = word[index]
         currentNode = root.children.get(ch)
         canThisNodeBeDeleted = False
         if len(currentNode.children) > 1:
-            deleteString(currentNode, word, index +1)
+            deleteString(currentNode, word, index+1)
             return False
-        if index == len(word) -1:
-            if len(currentNode.children) >=1:
+        
+        if index == len(word) - 1:
+            if len(currentNode.children) >= 1:
                 currentNode.endOfString = False
                 return False
             else:
                 root.children.pop(ch)
                 return True
-        if currentNode.endOfString == True:
-            deleteString(currentNode, word, index +1)
-            return False
         
+        if currentNode.endOfString == True:
+            deleteString(currentNode, word, index+1)
+            return False
+
         canThisNodeBeDeleted = deleteString(currentNode, word, index+1)
         if canThisNodeBeDeleted == True:
             root.children.pop(ch)
